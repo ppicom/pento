@@ -6,11 +6,13 @@ defmodule Pento.AccountsFixtures do
 
   def unique_user_email, do: "user#{System.unique_integer()}@example.com"
   def valid_user_password, do: "hello world!"
+  def unique_username, do: "tharkan#{System.unique_integer([:positive])}"
 
   def valid_user_attributes(attrs \\ %{}) do
     Enum.into(attrs, %{
       email: unique_user_email(),
-      password: valid_user_password()
+      password: valid_user_password(),
+      username: unique_username()
     })
   end
 
