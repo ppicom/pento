@@ -102,6 +102,9 @@ defmodule Pento.Catalog do
     Product.changeset(product, attrs)
   end
 
+  @doc """
+  Returns a
+  """
   def list_products_with_user_rating(user) do
     Product.Query.with_user_ratings(user)
     |> Repo.all()
