@@ -109,4 +109,20 @@ defmodule Pento.Catalog do
     Product.Query.with_user_ratings(user)
     |> Repo.all()
   end
+
+  @doc """
+  Returns a list of products with their average rating in the form of a tuple
+
+  ## Examples
+
+      > iex products_with_average_ratings()
+      [
+        {"product-name", 3.6},
+        {"another product", 4.999999}
+      ]
+  """
+  def products_with_average_ratings do
+    Product.Query.with_average_ratings()
+    |> Repo.all()
+  end
 end

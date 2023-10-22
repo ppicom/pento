@@ -85,6 +85,8 @@ defmodule PentoWeb.Router do
 
       live "/faqs/:id", FAQLive.Show, :show
       live "/faqs/:id/show/edit", FAQLive.Show, :edit
+
+      live "/admin/dashboard", Admin.DashboardLive
     end
   end
 
