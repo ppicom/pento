@@ -4,8 +4,9 @@ defmodule PentoWeb.SurveyLive do
   alias __MODULE__.Component
   alias Pento.Catalog
   alias Pento.Survey
-  alias PentoWeb.DemographicLive
-  alias PentoWeb.RatingLive
+  alias PentoWeb.{DemographicLive, RatingLive, Endpoint}
+
+  @survey_results_topic "survey_results"
 
   def mount(_params, _session, socket) do
     {:ok,
@@ -41,6 +42,8 @@ defmodule PentoWeb.SurveyLive do
   end
 
   defp handle_rating_created(%{assigns: %{products: products}} = socket, product, index) do
+    Endpoint.broadcast(@survey_results_topic, "rating_created", %{})
+
     socket
     |> put_flash(:info, "Rating submitted successfully")
     |> assign(:products, List.replace_at(products, index, product))
