@@ -32,7 +32,7 @@ defmodule Pento.Game.Pentomino do
   end
 
   def right(p) do
-    %{p | location: Point.move(p.location, 1, 0)}
+    %{p | location: Point.move(p.location, {+1, 0})}
   end
 
   def to_shape(pento) do
